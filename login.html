@@ -3,17 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login</title>
 </head>
 <body>
-    <h1>Webboard Muffin</h1>
+    <h1 style="text-align: center;">Webboard Muffin</h1>
     <hr>
+
     <form action="#">
-        <table>
-            <tr style="background-color: #6CD2FE;">เข้าสู่ระบบ</tr>
-            <tr></tr>
-        </table>
+    <table style="border: 2px solid black; width: 40%;" align="center">
+        <tr>
+            <td colspan="2" style="background-color: #6cd2fe;">เข้าสู่ระบบ</td>
+        </tr>
+        <tr>
+            <td>Login</td>
+            <td>
+                <input type="text" name="login" size="55" required>
+            </td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td>
+                <input type="password" name="password" size="55" required>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" value="Login">
+            </td>
+        </tr>
+
+    </table>
     </form>
-    
+    <br>
+
+    <p style="text-align: center;">ถ้ายังไม่ได้เป็นสมาชิก <a href="register.html"> กรุณาสมัครสมาชิก</a></p>
 </body>
 </html>
