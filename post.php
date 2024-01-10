@@ -11,7 +11,16 @@
 
     <form>
     <div>
-    ต้องการดูกระทู้หมายเลข <?php echo $_GET['id']; ?>
+    ต้องการดูกระทู้หมายเลข <?php echo $_GET['id'];
+
+    $i = $_GET['id'];
+    if(($i % 2) == 0){
+        echo "<br>เป็นกระทู้หมายเลขคู่";
+    }
+    else{
+        echo "<br>เป็นกระทู้หมายเลขคี่";
+    }
+    ?>
     </div>
     <br>
     <div style="text-align: center;">    
@@ -32,6 +41,6 @@
         </tr>
     </table>
     </form>
-        <p style="text-align: center;"><a href="index.html">กลับไปหน้าหลัก</a></p>
+        <p style="text-align: center;"><a href="index.php">กลับไปหน้าหลัก</a></p>
 </body>
 </html>
