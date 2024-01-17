@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +11,11 @@
 <body>
     <h1 style="text-align: center;">สมัครสมาชิก</h1>
     <hr>
+    <?php
+        if(isset($_SESSION['id'])){
+            header("location:index.php");
+        }
+    ?>
     <form action="#">
         <table style="border: 2px solid black; width: 40%;" align="center">
             <tr>
