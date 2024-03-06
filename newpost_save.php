@@ -13,6 +13,6 @@
              VALUES('$top', '$comm', NOW(), '$cate', '$user')";
     $conn->exec($sql1);
     $conn = null;
-    header("location:register.php");
+    header("location:index.php");
     die();
 ?>
