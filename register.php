@@ -11,8 +11,23 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
+    
+
 </head>
 <body>
+
+    <script>
+        function OnBlurPwd(){
+            let pwd1 = document.getElementById("password");
+            let pwd2 = document.getElementById("password2");
+
+            if(password.value !== password2.value){
+                alert("รหัสผ่านทั้งสองช่องไม่ตรงกัน");
+                pwd2.value = "";
+            }
+        }
+    </script>
+
    <div class="container-lg">
         <h1 style="text-align: center;" class="mt-3">★Webboard Muffin★</h1>
         <?php include "nav.php" ?>
@@ -46,6 +61,13 @@
                                 <label class="col-lg-3 col-form-label" for="password">รหัสผ่าน:</label>
                                 <div class="col-lg-9">
                                     <input type="password" name="password" class="form-control" id="password" required>
+                                </div>
+                            </div>
+
+                            <div class="row mt-3">
+                                <label class="col-lg-3 col-form-label" for="password2">ใส่รหัสผ่านซ้ำ:</label>
+                                <div class="col-lg-9">
+                                    <input type="password" name="password2" class="form-control" id="password2" onblur="OnBlurPwd()" required>
                                 </div>
                             </div>
 
