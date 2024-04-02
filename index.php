@@ -22,6 +22,13 @@
             let r = confirm("ต้องการจะลบจริงหรือไม่?");
             return r;
         }
+
+        function edit(name){
+            var button = document.getElementById('button');
+            button.innerHTML = name;
+        }
+
+        
     </script>
 
 </head>
@@ -48,7 +55,11 @@
                         echo "<li><a class=dropdown-item href=#>$row[name]</a></li>";
                     }
                     $conn = null;
+
+                    
                 ?>
+
+                
             </ul>
             </span>
         </div>
@@ -71,13 +82,19 @@
             <div>[ $row[0] ] <a href=post.php?id=$row[2]
             style=text-decoration:none> $row[1]</a><br> $row[3] - $row[4]</div>";
             if(isset($_SESSION['id']) && $_SESSION['role'] == 'a'){
-                echo "<div class='me-2 align-self-center'><a href=delete.php?id=$row[2]
-                class='btn btn-danger btn-sm' onclick='return myFunction()' ><i class='bi bi-trash'></i></a></div>";
+                echo "<div class='me-2 align-self-center'>
+                    <a class='btn btn-warning btn-sm' onclick='return edit()'><i class='bi bi-pencil-fill'></i></a>
+                    <a href=delete.php?id=$row[2]
+                    class='btn btn-danger btn-sm' onclick='return myFunction()' ><i class='bi bi-trash'></i></a>
+                
+                </div>";
+
             }
             echo "</td></tr>";
         }
         $conn = null;
     ?>
+
     </table>
 
     </div>
