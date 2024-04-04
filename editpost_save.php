@@ -1,23 +1,38 @@
 <?php
-    session_start();
-    $cat=$_POST['category'];
-    $top=$_POST['topic'];
-    $com=$_POST['comment'];
-    $user=$_SESSION['user_id'];
-    $id = $_POST['id'];
-    $conn=new PDO("mysql:host=localhost;dbname=webboard;charset=utf8","root","");
+session_start();
+if(isset($_POST['topic'])){
 
+    $post_id = $_POST['post_id'];
+    $topic = $_POST['topic'];
+    $comment = $_POST['comment'];
+    $user_id = $_SESSION['user_id'];
+    $cat_id = $_POST['category'];
 
-    $sql ="UPDATE post SET post.cat_id = '$cat',post.title = '$top', post.content = '$com' WHERE post.id = $id";
+    $conn = new PDO("mysql:host=localhost;dbname=webboard;charset=utf8","root","");
+    $sql = "UPDATE post SET title=:topic, content=:comment, post_date=NOW(), cat_id=:cat_id, user_id=:user_id WHERE id=:post_id";
+    $stmt = $conn->prepare($sql);
 
-    $result = $conn->exec($sql);
+    $stmt->bindParam(':topic', $topic);
+    $stmt->bindParam(':comment', $comment);
+    $stmt->bindParam(':cat_id', $cat_id, PDO::PARAM_INT); 
+    $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT); 
+    $stmt->bindParam(':post_id', $post_id, PDO::PARAM_INT);
 
-    if($result){
-        $_SESSION['add_edit']="success";
+    $stmt->execute();
+
+    if($stmt->rowCount() == 1){
+        $_SESSION['success'] = "success";
+		header('location:editpost.php?id='.$post_id);
+        die();
     }else{
-        $_SESSION['add_edit']="error";
+        $_SESSION['error'] = "error";
+		header('location:editpost.php?id='.$post_id);
+        die();
     }
-
-    header("location:editpost.php?id=$id");
-    $conn=null;
+    $conn = null;
+    die();
+    }else{
+        header('location:index.php');
+        die();
+    }
 ?>
